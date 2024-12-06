@@ -28,7 +28,7 @@ connection.once("open", () => {
     console.log("MongoDB Connection success!");
 });
 
-const studentRouter = require("./router/students.js");
+const studentRouter = require("./routes/students.js");
 
 app.use("/student",studentRouter);  //student.js file deka hadala me line deka add krnn
 

@@ -1,5 +1,6 @@
  const router = require("express").Router();
- let Student = require("../module/Student");
+ let Student = require("../models/Student");
+
 //insert part 
  router.route("/add").post((req,res) => { // post method use 
 
@@ -54,7 +55,7 @@ router.route("/update/:id").put(async (req,res)=>{
 
     const update = await Student.findByIdAndUpdate(userId, updateStudent)    //first pass id second pass object   // udpateStudent or {name,age,gender,phone}
             .then(() =>{
-                res.status(200).send({status: "User Updated", user: update})
+                res.status(200).send({status: "User Updated"})
             }).catch((err)=>{
                 console.log(err);
                 res.status(500).send({status: "Error with updating data",error :err.message});
@@ -67,12 +68,12 @@ router.route("/update/:id").put(async (req,res)=>{
 router.route("/delete/:id").delete(async (req, res) =>{
     let userId = req.params.id;
 
-    await Student.findByAndIdDelete(userId)
+    await Student.findByIdAndDelete(userId)
         .then(()=> {
             res.status(200).send({status: "User deleted" });
         }).catch((err)=>{
             console.log(err.message);
-            res.status(500).send({status: "Error with delete user", error: errr.message});
+            res.status(500).send({status: "Error with delete user", error: err.message});
         })
 })
 
@@ -81,9 +82,9 @@ router.route("/get/:id").get(async (req,res)=> {
     let userId = req.params.id;
 
     await Student.findById(userId)
-        .then(()=>{
-            res.status(200).send({status: "User fetched", user: user})
-        }).catch(()=>{
+        .then((student)=>{
+            res.status(200).send({status: "User fetched", user: student})
+        }).catch((err)=>{
             console.log(err.message);
             res.status(500).send({status: "Error with get user ", error: err.message});
         })
