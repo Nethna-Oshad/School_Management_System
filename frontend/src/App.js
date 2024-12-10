@@ -1,16 +1,20 @@
-
 import './App.css';
 import Header from './components/Header';
 import AddStudent from './components/AddStudent';
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div >
-      <Header/>
-      <AddStudent/>
-    </div>
+    <Router>
+      <div>
+        <Header />
+        <Routes>
+          
+          <Route path="/add" element={<AddStudent />} />
+        </Routes>
+      </div>
+    </Router>
   );
-} 
+}
 
 export default App;
