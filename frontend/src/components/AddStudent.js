@@ -1,4 +1,5 @@
-import React, {}from "react";
+import React, { useState }from "react";
+import axios from "axios";
 
 function AddStudent(){
 
@@ -8,20 +9,31 @@ function AddStudent(){
     const[phone, setPhone] = useState("");
 
 
-    function setData(e){
+    function sendData(e){
         e.preventDefault();
 
         const newStudent ={
             name,
             age,
             gender,
-            phone
+            phone  
         }
+
+        axios.post("http://localhost:8070/student/add",newStudent)
+            .then(()=>{
+                alert("Student Added")
+                setName("");
+                setAge("");
+                setGender("");
+                setPhone("");
+            }).catch((err)=>{
+                alert(err)
+            })
         
     }
     return(
         <div Class ="container">
-            <form class = "from1">
+            <form class = "from1" onSubmit={sendData}>
             <div class="mb-3">
                  <label for="name" class="form-label">Student  Name</label>
                 <input type="text" class="form-control" id="name" aria-describedby="Enter Name" placeholder="Enter Your Name"
@@ -57,4 +69,4 @@ function AddStudent(){
     )
 }
 
-export default AddStudent;
+export default AddStudent;        
