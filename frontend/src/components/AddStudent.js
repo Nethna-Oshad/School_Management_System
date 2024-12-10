@@ -32,30 +32,30 @@ function AddStudent(){
         
     }
     return(
-        <div Class ="container">
+        <div Class ="container" >
             <form class = "from1" onSubmit={sendData}>
-            <div class="mb-3">
+            <div class="col-6 mb-3">
                  <label for="name" class="form-label">Student  Name</label>
                 <input type="text" class="form-control" id="name" aria-describedby="Enter Name" placeholder="Enter Your Name"required 
                 onChange= {(e)=>{
                     setName(e.target.value);
                 }}/>
             </div>
-         <div class="mb-3">
+         <div class="col-6 mb-3">
                  <label for="age" class="form-label">Student  Age</label>
                 <input type="text" class="form-control" id="age" aria-describedby="Enter age" placeholder="Enter Your Age"required 
                 onChange= {(e)=>{
                     setAge(e.target.value);
                 }}/>
          </div>
-         <div class="mb-3">
+         <div class="col-6 mb-3">
                  <label for="gender" class="form-label">Student  Gender</label>
                 <input type="text" class="form-control" id="gender" aria-describedby="Enter Gender" placeholder="Enter Your Gender"required 
                 onChange= {(e)=>{
                     setGender(e.target.value);
                 }}/>
          </div>
-         <div class="mb-3">
+         <div class="col-6 mb-3">
                  <label for="phone" class="form-label">Student  phone</label>
                 <input type="text" class="form-control" id="phone" aria-describedby="Enter phone" placeholder="Enter Your PhoneNumber" required 
                 onChange= {(e)=>{
